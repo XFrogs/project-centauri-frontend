@@ -6,21 +6,31 @@ import {
   Link
 } from "react-router-dom";
 
+//styles
 import "./mystyles.scss";
+
+//common components
+import Navbar from './components/commons/navbar';
+import Footer from './components/commons/footer';
+
+//routes components
+import Home from './components/routes/home';
 
 const App = props => {
     return (
         <Router>
-
+            <Navbar/>
 
             <Switch>
                 <Route exact path="/">
 
-                    <h1 className="title has-text-centered">Centauri</h1>
+                    <Home/>
 
 
                 </Route>
             </Switch>
+
+            <Footer/>
 
         </Router>
     );
