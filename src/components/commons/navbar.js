@@ -38,7 +38,7 @@ function NavBar() {
             </div>
 
             {/* items */}
-            <div id="navbar" className="navbar-menu">
+            <div id="navbar" className="navbar-menu has-background-dark">
 
 
                 <div className="navbar-end">

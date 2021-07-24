@@ -58,6 +58,11 @@ $navbar-item-hover-background-color: rgba(0,0,0,0);
 //
 // }
 
+.has-background-dark2{
+    background: #0A0C0D !important;
+    color: white !important;
+}
+
 .has-background-darkgradient{
     background: linear-gradient(353deg, #0E1319 0%, #2b3540 100%);
     color: white;
