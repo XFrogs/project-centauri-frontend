@@ -5,14 +5,14 @@ import React from 'react';
 const Footer = () => {
 
     return(
-        <footer className="footer has-background-light">
+        <footer className="footer has-background-dark">
             <div className="container">
 
                 <div className="columns">
 
                     <div className="column">
                         <ul>
-                            <h1 className="title is-5">Centauri</h1>
+                            <h1 className="title is-5 has-text-white">Centauri</h1>
                             <li className="footer-item"><a>About</a></li>
                             <li className="footer-item"><a>White paper</a></li>
                             <li className="footer-item"><a>Roadmap</a></li>
@@ -23,7 +23,7 @@ const Footer = () => {
 
                     <div className="column ">
                         <ul>
-                            <h1 className="title is-5">Tutorials</h1>
+                            <h1 className="title is-5 has-text-white">Tutorials</h1>
                             <li className="footer-item"><a>Quick start</a></li>
                             <li className="footer-item"><a>How to play</a></li>
                             <li className="footer-item"><a>Buying / Selling heros</a></li>
@@ -32,7 +32,7 @@ const Footer = () => {
 
                     <div className="column ">
                         <ul>
-                            <h1 className="title is-5">Team</h1>
+                            <h1 className="title is-5 has-text-white">Team</h1>
                             <li className="footer-item"><a>Who are we</a></li>
                             <li className="footer-item"><a>Join us</a></li>
                         </ul>
@@ -40,7 +40,7 @@ const Footer = () => {
 
                     <div className="column ">
                         <ul>
-                            <h1 className="title is-5">Contact</h1>
+                            <h1 className="title is-5 has-text-white">Contact</h1>
                             <li className="footer-item"><a>Email us</a></li>
                             <li className="footer-item"><a>Report a bug</a></li>
 
@@ -58,7 +58,7 @@ const Footer = () => {
 
                 <div className="content has-text-centered">
                     <p className="is-size-4">
-                        {new Date().getFullYear().toString()}  <strong>Centauri</strong>
+                        <div className="has-text-white">{new Date().getFullYear().toString()}  <strong className="has-text-white">Centauri</strong></div>
                         &nbsp;&nbsp;
                     </p>
                     <p className="is-size-3">

@@ -1,5 +1,6 @@
 // Set your brand colors
-// $pink: #FA5083;
+$pink: #FF007A; //uniswap color
+$blue: #2172E5;
 // $purple: #6F3C7D;
 // $blue: #07B5F5;
 // $yellow: #F7EC6D;
@@ -8,7 +9,11 @@
 // $primary-gra: linear-gradient(0deg, rgba(18,18,22,1) 0%, rgba(24,25,38,1) 100%);
 
 // Update Bulma's global variables
-//$primary: #6992D6; //$pink;
+$primary: $pink;//#6992D6; //$pink;
+$dark: #0E1319;
+$link: $blue;
+
+$navbar-item-hover-background-color: rgba(0,0,0,0);
 //$navbar-item-hover-color: $pink;
 
 
@@ -44,23 +49,31 @@
 // }
 //
 //
-// *{
-//     font-family: 'Open Sans', sans-serif;
-// }
+*{
+    font-family: 'Inter', sans-serif;
+}
 //
 // .has-cool-font{
 //     font-family: 'Major Mono Display', monospace;
 //
 // }
 
-.has-cool-gradient{
-    background: linear-gradient(135deg, #dbe7f2 50%, #1b2538 50%);
+.has-background-darkgradient{
+    background: linear-gradient(353deg, #0E1319 0%, #2b3540 100%);
+    color: white;
+
 }
 
+.has-cool-gradient{
+    background: linear-gradient(135deg, #0E1319 50%, #2172E5 50%);
+    color: white;
+}
 
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
 
 @import "../node_modules/bulma/bulma.sass";
+
 
 // @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 // @import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=VT323&display=swap');

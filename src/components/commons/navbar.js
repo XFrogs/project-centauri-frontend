@@ -1,7 +1,11 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 
+import './navbar.scss';
+
 function NavBar() {
+
+    const [isLoggedIn, setLoggedIn] = useState(false);
 
     const onBurgerClicked= e => {
         e.preventDefault();
@@ -13,7 +17,7 @@ function NavBar() {
     }
 
     return(
-        <nav className="navbar py-3" role="navigation" aria-label="main navigation">
+        <nav className="navbar has-background-dark py-3" role="navigation" aria-label="main navigation">
 
 
             {/* logo */}
@@ -21,7 +25,7 @@ function NavBar() {
                 <Link to="/" className="navbar-item asd">&nbsp;&nbsp;
 
 
-                    <p className="title is-5 is-family-primary">&nbsp; Centauri</p>
+                    <p className="title is-5 is-family-primary has-text-white">&nbsp; Centauri</p>
                 </Link>
 
 
@@ -39,20 +43,39 @@ function NavBar() {
 
                 <div className="navbar-end">
 
-                    <Link to="/" className="navbar-item">
+                    <Link to="/" className="navbar-item has-text-light">
                         <span className="icon"><i className="fas fa-home"></i></span>&nbsp;
                         <h1>home</h1>
                     </Link>
 
-                    <Link to="/marketplace" className="navbar-item">
+                    <Link to="/marketplace" className="navbar-item has-text-light">
                         <span className="icon"><i className="fas fa-store"></i></span>&nbsp;
                         <h1>Marketplace</h1>
                     </Link>
 
-                    <Link to="/marketplace" className="navbar-item">
+                    <Link to="/marketplace" className="navbar-item has-text-light">
                         <span className="icon"><i className="fas fa-store"></i></span>&nbsp;
                         <h1>Inventory</h1>
                     </Link>
+
+
+                    <a className="navbar-item has-back">
+                        {
+                            isLoggedIn ?
+                            <div>
+                                <div className="level">
+
+                                    <figure class="image is-64x64px">
+                                        <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png"/>
+                                    </figure> &nbsp;
+                                    <h1 className="subtitle">Nickname</h1>
+                                </div>
+                            </div>
+                            :
+                            <button class="button is-primary is-light">Connect</button>
+                        }
+
+                    </a>
 
                 </div>
 
