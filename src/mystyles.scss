@@ -1,0 +1,73 @@
+// Set your brand colors
+// $pink: #FA5083;
+// $purple: #6F3C7D;
+// $blue: #07B5F5;
+// $yellow: #F7EC6D;
+// $lavanda: #C28DE0;
+// $navbar-item-img-max-height: 67px;
+// $primary-gra: linear-gradient(0deg, rgba(18,18,22,1) 0%, rgba(24,25,38,1) 100%);
+
+// Update Bulma's global variables
+//$primary: #6992D6; //$pink;
+//$navbar-item-hover-color: $pink;
+
+
+// .App {
+//   text-align: center;
+//   margin: 2rem;
+// }
+//
+// .section {
+//   text-align: left;
+//   max-width: 720px;
+//   margin: 4rem auto auto;
+// }
+//
+// .has-text-pink{
+//     color: $pink !important;
+// }
+//
+// .footer-item{
+//     list-style-type: none;
+// }
+//
+// .has-background-gradient{
+//     background: $primary-gra;
+//     color: white;
+// }
+//
+//
+// .has-text-gradient{
+//   background: linear-gradient(45deg, rgba(247,236,109,1) 0%, rgba(250,80,131,1) 50%, rgba(7,181,245,1) 100%);
+//   -webkit-background-clip: text;
+//   -webkit-text-fill-color: transparent;
+// }
+//
+//
+// *{
+//     font-family: 'Open Sans', sans-serif;
+// }
+//
+// .has-cool-font{
+//     font-family: 'Major Mono Display', monospace;
+//
+// }
+
+
+
+
+
+@import "../node_modules/bulma/bulma.sass";
+
+// @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=VT323&display=swap');
+// // Import only what you need from Bulma
+// @import "../node_modules/bulma/sass/utilities/_all.sass";
+// @import "../node_modules/bulma/sass/base/_all.sass";
+// @import "../node_modules/bulma/sass/elements/button.sass";
+// @import "../node_modules/bulma/sass/elements/container.sass";
+// @import "../node_modules/bulma/sass/elements/title.sass";
+// @import "../node_modules/bulma/sass/form/_all.sass";
+// @import "../node_modules/bulma/sass/components/navbar.sass";
+// @import "../node_modules/bulma/sass/layout/hero.sass";
+// @import "../node_modules/bulma/sass/layout/section.sass";
