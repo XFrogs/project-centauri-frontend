@@ -58,7 +58,7 @@ const Footer = () => {
 
                 <div className="content has-text-centered">
                     <p className="is-size-4">
-                        <div className="has-text-white">{new Date().getFullYear().toString()}  <strong className="has-text-white">Centauri</strong></div>
+                        <span className="has-text-white">{new Date().getFullYear().toString()}  <strong className="has-text-white">Centauri</strong></span>
                         &nbsp;&nbsp;
                     </p>
                     <p className="is-size-3">

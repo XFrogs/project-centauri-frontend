@@ -65,14 +65,14 @@ function NavBar() {
                             <div>
                                 <div className="level">
 
-                                    <figure class="image is-64x64px">
-                                        <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png"/>
+                                    <figure className="image is-64x64px">
+                                        <img className="is-rounded" src="https://bulma.io/images/placeholders/128x128.png"/>
                                     </figure> &nbsp;
                                     <h1 className="subtitle">Nickname</h1>
                                 </div>
                             </div>
                             :
-                            <button class="button is-primary is-light">Connect</button>
+                            <button className="button is-primary is-light">Connect</button>
                         }
 
                     </a>
