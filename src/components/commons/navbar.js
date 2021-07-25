@@ -43,17 +43,17 @@ function NavBar() {
 
                 <div className="navbar-end">
 
-                    <Link to="/" className="navbar-item has-text-light">
+                    <Link to="/" className="navbar-item has-text-white">
                         <span className="icon"><i className="fas fa-home"></i></span>&nbsp;
                         <h1>home</h1>
                     </Link>
 
-                    <Link to="/marketplace" className="navbar-item has-text-light">
+                    <Link to="/marketplace" className="navbar-item has-text-white">
                         <span className="icon"><i className="fas fa-store"></i></span>&nbsp;
                         <h1>Marketplace</h1>
                     </Link>
 
-                    <Link to="/marketplace" className="navbar-item has-text-light">
+                    <Link to="/marketplace" className="navbar-item has-text-white">
                         <span className="icon"><i className="fas fa-store"></i></span>&nbsp;
                         <h1>Inventory</h1>
                     </Link>
