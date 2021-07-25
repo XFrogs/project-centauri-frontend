@@ -5,6 +5,7 @@
 4. axios -> fetch library
 
 ## Project structure
-**Routes folder**: contains the main pages of the app eg. main page, marketplace, profile, etc
 
-**Common**: contains components that are used all along the website eg. Navbar. footer.
+**Commons**: contains components that are used all along the website eg. Navbar. footer.
+
+**Routes**: contains the main pages of the app eg. main page, marketplace, profile, etc
