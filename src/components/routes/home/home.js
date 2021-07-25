@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {baseURL} from '../../images.js';
+import {baseURL} from '../../../images.js';
 import "./home.scss"
 import {Link} from 'react-router-dom';
 import axios from 'axios';
