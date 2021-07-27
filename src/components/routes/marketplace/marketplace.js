@@ -2,40 +2,62 @@ import {useState, useEffect} from 'react';
 
 import NftCard from '../../cards/nftcard';
 import splitEvery from '../../utils/columnsSplitter';
+import Pagination from '../../commons/pagination';
+
 import axios from 'axios';
 
 import './marketplace.scss';
 
 const Marketplace = props => {
 
-    const [nfts, setNfts] = useState([]);
+    const url = 'https://jsonplaceholder.typicode.com/todos';
 
-    const [current, setCurrent] = useState(20);
+    //NTT cards
+    const [data, setData] = useState([]);
+    const [nfts, setNfts] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+    //pagination
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postPerPage, setPostPerPage] = useState(20);
+
+
+
+
+
+    const displayItemsNumber = 20;
+    const [divisions, setDivisions] = useState(0);
 
     useEffect(
         () => {
 
-            axios.get('https://jsonplaceholder.typicode.com/todos')
-            .then(res => setNfts(res.data.splice(0, current)) );
+            const fetchPosts = async () => {
 
+                setLoading(true);
+                const res = await axios.get(url);
+                setData(res.data);
+                setLoading(false);
+            }
+            fetchPosts();
         },
         []
     );
 
-    const onNextClicked = e => {
-        e.preventDefault();
+    // Get current post
+    const indexOfLastPost = currentPage * postPerPage;
+    const indexOfFirstPost = indexOfLastPost - postPerPage;
+    const currentPosts = data.slice(indexOfFirstPost, indexOfLastPost);
 
-        setNfts([]);
+    const onPageClicked = (e, pageNumber) =>{
 
-        const iniVal = current;
+        // const active = document.querySelector('.is-current');
+        //
+        // active.classList.toggle('.is-current');
+        // e.target.classList.toggle('.is-current');
 
-        setCurrent(current + current);
+        setCurrentPage(pageNumber);
 
-        axios.get('https://jsonplaceholder.typicode.com/todos')
-        .then(res => setNfts(res.data.splice(iniVal, current)) );
     }
-
-
 
     return(
         <div>
@@ -60,38 +82,17 @@ const Marketplace = props => {
             <section className="block has-text-centered p-6 has-background-dark mb-0">
                 <div className="container">
 
-                <nav class="pagination" role="navigation" aria-label="pagination">
-                  <a class="pagination-previous has-text-white">Previous</a>
-                  <a class="pagination-next has-text-white" onClick={onNextClicked}>Next page</a>
-                  <ul class="pagination-list">
-                    <li>
-                      <a class="pagination-link has-text-white" onClick={onNextClicked} aria-label="Goto page 1">1</a>
-                    </li>
-                    <li>
-                      <span class="pagination-ellipsis">&hellip;</span>
-                    </li>
-                    <li>
-                      <a class="pagination-link has-text-white" aria-label="Goto page 45">45</a>
-                    </li>
-                    <li>
-                      <a class="pagination-link has-text-white is-current" aria-label="Page 46" aria-current="page">46</a>
-                    </li>
-                    <li>
-                      <a class="pagination-link has-text-white" aria-label="Goto page 47">47</a>
-                    </li>
-                    <li>
-                      <span class="pagination-ellipsis">&hellip;</span>
-                    </li>
-                    <li>
-                      <a class="pagination-link has-text-white" aria-label="Goto page 86">86</a>
-                    </li>
-                  </ul>
-                </nav>
+                    {/* pagination */}
+                    <Pagination
+                        postPerPage={postPerPage}
+                        totalPost={data.length}
+                        onPageClicked={onPageClicked}
+                    />
 
 
 
                     {/* Search bar & filters */}
-                    <div className="columns">
+                    <nav className="columns">
 
                         <div className="column">
                             <div className="level">
@@ -124,19 +125,19 @@ const Marketplace = props => {
                         </div>
 
 
-                    </div>
+                    </nav>
 
                     <br/><br/>
 
                     {/* nfts */}
 
                         {
-                            splitEvery(nfts, 4).map( (heros, i) =>
-                                <div>
-                                    <div className="columns mb-6" key={i}>
+                            splitEvery(currentPosts, 4).map( (heros, i) =>
+                                <div key={i}>
+                                    <div className="columns mb-6" >
                                         {
                                             heros.map( (hero, j) =>
-                                                <div className="column" key={j}>
+                                                <div className="column is-3" key={j}>
                                                     <NftCard
                                                         name={hero.title.substr(0, hero.title.indexOf(" "))}
                                                         price={(Math.random() * 3).toFixed(2)}
@@ -150,6 +151,13 @@ const Marketplace = props => {
 
                             )
                         }
+
+                    {/* pagination */}
+                    <Pagination
+                        postPerPage={postPerPage}
+                        totalPost={data.length}
+                        onPageClicked={onPageClicked}
+                    />
 
 
                 </div>
