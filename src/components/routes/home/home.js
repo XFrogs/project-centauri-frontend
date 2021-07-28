@@ -60,7 +60,7 @@ const Home = props => {
 
                             <div className="column is-offset-1">
 
-                                <img src="https://wonder-day.com/wp-content/uploads/2020/11/wonder-day-png-cyberpunk-2077-10.png"/>
+                                <img src={baseURL+'1fh7H3SKvyL3GmnIcizhjfHw8XHgI2OMM'}/>
 
                             </div>
 
