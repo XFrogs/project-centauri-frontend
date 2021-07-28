@@ -16,6 +16,7 @@ import Footer from './components/commons/footer';
 //routes components
 import Home from './components/routes/home/home';
 import Marketplace from './components/routes/marketplace/marketplace';
+import Profile from './components/routes/profile/profile';
 
 const App = props => {
     return (
@@ -26,11 +27,16 @@ const App = props => {
                 <Route exact path="/">
                     <Home/>
                 </Route>
-            </Switch>
                 <Route exact path="/marketplace">
                     <Marketplace/>
                 </Route>
+                <Route exact path="/profile">
+                    <Profile/>
+                </Route>
+            </Switch>
+
             <Footer/>
+
         </Router>
     );
 }

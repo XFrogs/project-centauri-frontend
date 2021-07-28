@@ -53,7 +53,7 @@ function NavBar() {
                         <h1>Marketplace</h1>
                     </Link>
 
-                    <Link to="/marketplace" className="navbar-item has-text-white">
+                    <Link to="/profile" className="navbar-item has-text-white">
                         <span className="icon"><i className="fas fa-store"></i></span>&nbsp;
                         <h1>Inventory</h1>
                     </Link>
