@@ -17,6 +17,7 @@ import Footer from './components/commons/footer';
 import Home from './components/routes/home/home';
 import Marketplace from './components/routes/marketplace/marketplace';
 import Profile from './components/routes/profile/profile';
+import Editor from './components/routes/editor/editor';
 
 const App = props => {
     return (
@@ -32,6 +33,9 @@ const App = props => {
                 </Route>
                 <Route exact path="/profile">
                     <Profile/>
+                </Route>
+                <Route exact path="/editor">
+                    <Editor/>
                 </Route>
             </Switch>
 
