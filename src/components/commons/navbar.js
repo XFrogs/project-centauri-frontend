@@ -58,6 +58,10 @@ function NavBar() {
                         <h1>Inventory</h1>
                     </Link>
 
+                    <Link to="/editor" className="navbar-item has-text-white">
+                        <h1>Editor</h1>
+                    </Link>
+
 
                     <a className="navbar-item has-back">
                         {
