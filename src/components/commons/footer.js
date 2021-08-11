@@ -48,7 +48,7 @@ const Footer = () => {
                                 <a target="_blank"><span className="icon"><i className="fab fa-telegram"></i></span>&nbsp;&nbsp;</a>
                                 <a target="_blank"><span className="icon"><i className="fab fa-twitter"></i></span>&nbsp;&nbsp;</a>
                                 <a target="_blank"><span className="icon"><i className="fab fa-youtube"></i></span>&nbsp;&nbsp;</a>
-                                <a target="_blank" href="https://www.instagram.com/bootylicioouus"><span className="icon"><i className="fab fa-instagram"></i></span>&nbsp;&nbsp;</a>
+                                <a target="_blank"><span className="icon"><i className="fab fa-instagram"></i></span>&nbsp;&nbsp;</a>
                                 <a target="_blank"><span className="icon"><i className="fab fa-discord"></i></span>&nbsp;&nbsp;</a>
                             </li>
                         </ul>
