@@ -25,7 +25,7 @@ function NavBar() {
                 <Link to="/" className="navbar-item asd">&nbsp;&nbsp;
 
 
-                    <p className="title is-5 is-family-primary has-text-white">&nbsp; Centauri</p>
+                    <p className="title is-5 has-title-font has-text-white">&nbsp; C R Y P U N K S</p>
                 </Link>
 
 

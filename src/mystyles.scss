@@ -50,9 +50,11 @@ $navbar-item-hover-background-color: rgba(0,0,0,0);
 // }
 //
 //
-*{
-    font-family: 'Inter', sans-serif;
+.has-title-font{
+    font-family: 'Orbitron', sans-serif;
 }
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
 //
 // .has-cool-font{
 //     font-family: 'Major Mono Display', monospace;

@@ -1,8 +1,11 @@
 import {useState, useEffect} from 'react';
 import {baseURL} from '../../../images.js';
-import "./home.scss"
+import "./home.scss";
 import {Link} from 'react-router-dom';
 import NftCard from '../../cards/nftcard';
+
+// import banner from '../../../media/banner.png';
+
 import axios from 'axios';
 
 const UpcomingCard = props => {
@@ -45,31 +48,24 @@ const Home = props => {
     return(
         <div>
             {/* Banner */}
-            <section className="hero  has-cool-gradient">
-                <div className="hero-body">
+            <section className="hero is-fullheight-with-navbar has-cool-gradient bg-img">
 
-                    <div className="container">
-                        <div className="columns is-vcentered">
-                            <div className="column has-text-centered-mobile">
-                                <h1 className="title is-1 has-text-white">Centauri</h1>
-                                <p className="subtitle has-text-white has-text-justified">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut</p>
-                                <button className="button is-primary">Start playing</button> &nbsp;
-                                <button className="button">Tutorials</button>
-
-                            </div>
-
-                            <div className="column is-offset-1">
-
-                                <img src={baseURL+'1fh7H3SKvyL3GmnIcizhjfHw8XHgI2OMM'}/>
-
-                            </div>
-
-                        </div>
-                    </div>
+                <div className="hero-body " style={{background: 'rgba(0, 0, 0, 0.7)'}}>
 
                 </div>
+
+                <div className="hero-foot pb-6" style={{background: 'rgba(0, 0, 0, 0.7)', height: '400px'}}>
+                    <div className="container has-text-centered pb-6">
+
+                        <h1 className="title is-1 has-text-centered has-text-white">Fight for freedom, quit your job.</h1>
+                        <h1 className="subtitle is-3 has-text-white mt-3">Own a fighter, participate in fight, earn tokens.</h1>
+
+                    </div>
+                </div>
             </section>
+
             <hr className="p-0 m-0" style={{background: '#2e3b4a'}}/>
+
             <section className="block has-text-centered p-6 has-background-dark mb-0">
 
                 <h1 className="title has-text-white mb-6">Live fighting</h1>
