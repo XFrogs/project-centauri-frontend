@@ -110,7 +110,17 @@ const Home = props => {
 
                             <div className="box has-background-dark is-flex is-flex-direction-column is-justify-content-center " style={{height: '100%'}}>
 
-                                    <img src={hero} className="is-flex-grow-1 p-3" style={{borderRadius: '20px'}}/>
+                            {
+                                buttonState == 0 ?
+                                <img src={hero} className="is-flex-grow-1 p-3" style={{borderRadius: '20px'}}/>
+                                :
+                                <div className="box has-background-dark2 is-flex-grow-1">
+                                    <br/><br/><br/><br/><br/><br/>
+                                    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                                </div>
+
+                            }
+
 
                                 <TechButton
                                     currentState={buttonState}
