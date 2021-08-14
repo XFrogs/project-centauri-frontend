@@ -31,24 +31,6 @@
 }
 
 
-@keyframes spin {
-  from {
-    transform: rotate(0);
-  }
-  to{
-    transform: rotate(359deg);
-  }
-}
-
-@keyframes spin3D {
-  from {
-    transform: rotate3d(.5,.5,.5, 360deg);
-  }
-  to{
-    transform: rotate3d(0deg);
-  }
-}
-
 
 
 
@@ -268,4 +250,23 @@
   border-top: 3px solid transparent;
   border-radius: 50%;
   animation: spin .5s linear 0s infinite;
+}
+
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to{
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes spin3D {
+  from {
+    transform: rotate3d(.5,.5,.5, 360deg);
+  }
+  to{
+    transform: rotate3d(0deg);
+  }
 }
