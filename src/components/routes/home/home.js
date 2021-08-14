@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import {baseURL} from '../../../images.js';
-import "./home.css";
+import "./home.scss";
 import {Link} from 'react-router-dom';
 import NftCard from '../../cards/nftcard';
 
@@ -115,25 +115,7 @@ const Home = props => {
                                 <img src={hero} className="is-flex-grow-1 p-3" style={{borderRadius: '20px'}}/>
                                 :
                                 <div className="box has-background-dark2 is-flex-grow-1">
-                                    <div class="spinner-box">
-                                        <div class="blue-orbit leo">
-                                        </div>
-
-                                        <div class="green-orbit leo">
-                                        </div>
-
-                                        <div class="red-orbit leo">
-                                        </div>
-
-                                        <div class="white-orbit w1 leo">
-                                        </div>
-
-                                        <div class="white-orbit w2 leo">
-                                        </div>
-
-                                        <div class="white-orbit w3 leo">
-                                        </div>
-                                    </div>
+                                    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
                                     <h1 className="subtitle has-text-white is-4">Searching...</h1>
                                 </div>
 
