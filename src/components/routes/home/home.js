@@ -115,6 +115,9 @@ const Home = props => {
                                 <img src={hero} className="is-flex-grow-1 p-3" style={{borderRadius: '20px'}}/>
                                 :
                                 <div className="box has-background-dark2 is-flex-grow-1">
+                                    <br/><br/>
+                                    <br/><br/>
+                                    <br/>
                                     <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
                                     <h1 className="subtitle has-text-white is-4">Searching...</h1>
                                 </div>
