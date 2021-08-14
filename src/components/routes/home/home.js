@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import {baseURL} from '../../../images.js';
-import "./home.scss";
+import "./home.css";
 import {Link} from 'react-router-dom';
 import NftCard from '../../cards/nftcard';
 
