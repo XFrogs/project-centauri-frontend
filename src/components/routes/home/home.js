@@ -4,6 +4,10 @@ import "./home.scss";
 import {Link} from 'react-router-dom';
 import NftCard from '../../cards/nftcard';
 
+import TechButton from './techButton';
+
+import hero from './hero.png';
+
 // import banner from '../../../media/banner.png';
 
 import axios from 'axios';
@@ -19,6 +23,20 @@ const UpcomingCard = props => {
 }
 
 const Home = props => {
+
+    const toggleState = () => {
+
+        console.log(buttonState);
+        if(buttonState == 0)
+            setButtonState(1);
+
+        else setButtonState(0);
+    }
+
+
+    const [buttonState, setButtonState] = useState(0);
+
+
 
     const [upcomingMatches, setUpcomingMatches] = useState([]);
 
@@ -48,19 +66,22 @@ const Home = props => {
     return(
         <div>
             {/* Banner */}
-            <section className="hero is-fullheight-with-navbar has-cool-gradient bg-img">
+            <section className="hero is-medium has-cool-gradient bg-img herop">
 
-                <div className="hero-body " style={{background: 'rgba(0, 0, 0, 0.7)'}}>
+                <div className="hero-body " >
 
                 </div>
 
-                <div className="hero-foot pb-6" style={{background: 'rgba(0, 0, 0, 0.7)', height: '400px'}}>
+                <div className="hero-foot pb-6" style={{height: '400px'}}>
                     <div className="container has-text-centered pb-6">
 
-                        <h1 className="title is-1 has-text-centered has-text-white">Fight for freedom, quit your job.</h1>
-                        <h1 className="subtitle is-3 has-text-white mt-3">Own a fighter, participate in fight, earn tokens.</h1>
+                        <h1 className="title is-1 has-text-centered has-text-white has-text-weight-bold" style={{fontSize: '3.5rem'}}>fight for freedom, quit your job.</h1>
+                        <h1 className="subtitle is-3 has-text-white mt-3 is-hidden-touch" style={{fontSize: '2.5rem'}}>Own a fighter, participate in fight, earn tokens.</h1>
 
                     </div>
+                </div>
+
+                <div className="banner-tint">
                 </div>
             </section>
 
@@ -68,11 +89,14 @@ const Home = props => {
 
             <section className="block has-text-centered p-6 has-background-dark mb-0">
 
-                <h1 className="title has-text-white mb-6">Live fighting</h1>
 
-                <div className="container">
+                <div className="container video-div" style={{zIndex: '11'}}>
+
+
+
 
                     <div className="columns">
+
 
                         {/* livestreaming */}
                         <div className="column">
@@ -84,26 +108,15 @@ const Home = props => {
                         {/* current match info */}
                         <div className="column is-3 has-text-centered">
 
-                            <div className="card has-background-dark2" style={{maxWidth: '250px', left: '50%', transform: 'translate(-50%)'}}>
-                                <div className="card-image">
-                                    <figure className="image is-4by3">
-                                      <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image"/>
-                                    </figure>
-                                </div>
-                                <div className="card-content">
-                                    <p className="title is-4 has-text-light">Hero name</p>
-                                </div>
-                            </div>
-                            <h1 className="is-size-2 has-text-white is-1 m-3">VS</h1>
-                            <div className="card has-background-dark2" style={{maxWidth: '250px', left: '50%', transform: 'translate(-50%)'}}>
-                                <div className="card-image">
-                                    <figure className="image is-4by3">
-                                      <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image"/>
-                                    </figure>
-                                </div>
-                                <div className="card-content">
-                                    <p className="title is-4 has-text-light">Hero name</p>
-                                </div>
+                            <div className="box has-background-dark is-flex is-flex-direction-column is-justify-content-center " style={{height: '100%'}}>
+
+                                    <img src={hero} className="is-flex-grow-1 p-3" style={{borderRadius: '20px'}}/>
+
+                                <TechButton
+                                    currentState={buttonState}
+                                    onClick={toggleState}
+                                    disabled={false}
+                                >{buttonState == 0 ? 'Fight' : ' Cancel'}</TechButton>
                             </div>
                         </div>
 
