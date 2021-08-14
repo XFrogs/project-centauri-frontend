@@ -115,22 +115,24 @@ const Home = props => {
                                 <img src={hero} className="is-flex-grow-1 p-3" style={{borderRadius: '20px'}}/>
                                 :
                                 <div className="box has-background-dark2 is-flex-grow-1">
-                                <div class="spinner-box">
-                                    <div class="blue-orbit leo">
-                                    </div>
+                                    <div class="spinner-box">
+                                        <div class="blue-orbit leo">
+                                        </div>
 
-                                    <div class="green-orbit leo">
-                                    </div>
+                                        <div class="green-orbit leo">
+                                        </div>
 
-                                    <div class="red-orbit leo">
-                                    </div>
+                                        <div class="red-orbit leo">
+                                        </div>
 
-                                    <div class="white-orbit w1 leo">
-                                    </div>
-                                    <div class="white-orbit w2 leo">
-                                    </div>
-                                    <div class="white-orbit w3 leo">
-                                    </div>
+                                        <div class="white-orbit w1 leo">
+                                        </div>
+                                        
+                                        <div class="white-orbit w2 leo">
+                                        </div>
+
+                                        <div class="white-orbit w3 leo">
+                                        </div>
                                     </div>
                                 </div>
 
