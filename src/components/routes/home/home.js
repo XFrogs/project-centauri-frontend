@@ -127,13 +127,14 @@ const Home = props => {
 
                                         <div class="white-orbit w1 leo">
                                         </div>
-                                        
+
                                         <div class="white-orbit w2 leo">
                                         </div>
 
                                         <div class="white-orbit w3 leo">
                                         </div>
                                     </div>
+                                    <h1 className="subtitle has-text-white is-4">Searching...</h1>
                                 </div>
 
                             }
