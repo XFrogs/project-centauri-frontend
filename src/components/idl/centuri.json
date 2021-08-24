@@ -1,0 +1,142 @@
+{
+  "version": "0.0.0",
+  "name": "centuri",
+  "instructions": [
+    {
+      "name": "initialize",
+      "accounts": [],
+      "args": []
+    },
+    {
+      "name": "createMatchinfo",
+      "accounts": [
+        {
+          "name": "matchinfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "matchinfoSigner",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "from",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "owner",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        },
+        {
+          "name": "nonce",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "cashMatchinfo",
+      "accounts": [
+        {
+          "name": "matchinfo",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vault",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "matchinfoSigner",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "to",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "owner",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Matchinfo",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "from",
+            "type": "publicKey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "vault",
+            "type": "publicKey"
+          },
+          {
+            "name": "nonce",
+            "type": "u8"
+          },
+          {
+            "name": "burned",
+            "type": "bool"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 300,
+      "name": "InvalidMatchinfoNonce",
+      "msg": "The given nonce does not create a valid program derived address."
+    },
+    {
+      "code": 301,
+      "name": "InvalidMatchinfoSigner",
+      "msg": "The derived matchinfo signer does not match that which was given."
+    },
+    {
+      "code": 302,
+      "name": "AlreadyBurned",
+      "msg": "The given matchinfo has already been burned."
+    }
+  ],
+  "metadata": {
+    "address": "3S8UfoyVCQzUaP6shDqtGiKZuuPcMNPbNpeMQGKPSS6g"
+  }
+}
