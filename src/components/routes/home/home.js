@@ -189,13 +189,13 @@ const Home = (props) => {
               className="title is-1 has-text-centered has-text-white has-text-weight-bold"
               style={{ fontSize: "3.5rem" }}
             >
-              fight for freedom, quit your job.
+              Fight for freedom. Quit your job.
             </h1>
             <h1
               className="subtitle is-3 has-text-white mt-3 is-hidden-touch"
               style={{ fontSize: "2.5rem" }}
             >
-              Own a fighter, participate in fight, earn tokens.
+              Own a fighter, participate in fight, earn freedom.
             </h1>
           </div>
         </div>
@@ -254,14 +254,23 @@ const Home = (props) => {
                     </h1>
                   </div>
                 )}
-
-                <TechButton
+                <div class="center">
+                  <button
+                    class="raise"
+                    currentState={buttonState}
+                    onClick={toggleState}
+                    disabled={false}
+                  >
+                    {buttonState == 0 ? "Fight" : " Cancel"}
+                  </button>
+                </div>
+                {/* <TechButton
                   currentState={buttonState}
                   onClick={toggleState}
                   disabled={false}
                 >
                   {buttonState == 0 ? "Fight" : " Cancel"}
-                </TechButton>
+                </TechButton> */}
               </div>
             </div>
           </div>
