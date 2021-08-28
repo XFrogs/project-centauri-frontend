@@ -12,9 +12,16 @@ import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
 import TechButton from "./techButton";
 import * as web3 from "@solana/web3.js";
 import hero from "./hero.png";
+import banner from "./banner.png";
 import idl from "../../idl/centuri.json";
+import wide5_cyan from "./wide5_cyan.jpg";
+import wide5_green from "./wide5_green.jpg";
+import wide5_orange from "./wide5_orange.jpg";
+import start from "./start.png";
+import end from "./end.png";
+import inq from "./inq.gif";
 // import banner from '../../../media/banner.png';
-
+import fight from "./fight.mp4";
 import axios from "axios";
 
 // const SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID: PublicKey = new PublicKey(
@@ -48,13 +55,16 @@ const UpcomingCard = (props) => {
     </div>
   );
 };
+const BUTTON_STATE = ["FIGHT", "CANCLE", "IN MATCH", "CLAIM"];
 
+const MODEL_ARRAY = [wide5_cyan, wide5_green, wide5_orange];
 const Home = (props) => {
   //const [isConnected, setIsConnected] = useState(false);
   const [buttonState, setButtonState] = useState(0);
   const [upcomingMatches, setUpcomingMatches] = useState([]);
-
+  const [src, setSrc] = useState(MODEL_ARRAY[0]);
   const [heros, setHeros] = useState([]);
+  const [state, setState] = useState("FIGHT");
 
   // //mint and programid here
   // const mint = "6dh3fAW62xY1NMLT1Jr81eozRyRkuep9JK1bHeCpEaDy";
@@ -136,20 +146,112 @@ const Home = (props) => {
     //   TOKEN_PROGRAM_ID
     // );
 
-    // //reciver code
-    // // await program.rpc.cashCheck({
-    // //   accounts: {
-    // //     check: check.publicKey,
-    // //     vault: vault.publicKey,
-    // //     checkSigner: checkSigner,
-    // //     to: receiver,
-    // //     owner: program.provider.wallet.publicKey,
-    // //     tokenProgram: TOKEN_PROGRAM_ID,
-    // //   },
-    // // });
+    //console.log(resNextId);
 
-    if (buttonState == 0) setButtonState(1);
-    else setButtonState(0);
+    //reciver code
+
+    // //valut 1;
+    // await program.rpc.cashCheck({
+    //   accounts: {
+    //     check: check.publicKey,
+    //     vault: vault.publicKey,
+    //     checkSigner: checkSigner,
+    //     to: receiver,
+    //     owner: program.provider.wallet.publicKey,
+    //     tokenProgram: TOKEN_PROGRAM_ID,
+    //   },
+    // });
+    //valut 1;
+
+    // await make_a_vault{
+    //   key : "player 1"
+    // }
+
+    //wins = playert 1 keu dn player 2 key
+    // await program.rpc.cashCheck({
+    //   accounts: {
+    //     key: "Player 1",
+    //   },
+    // });
+    // await program.rpc.cashCheck({
+    //   accounts: {
+    //     key: " pllyaer 2",
+    //   },
+    // });
+    // player1 == fight
+    // q  == cancel
+    // mathced == inmatch
+    // over  ==  claim.
+    const getID = await axios.get("http://localhost:5000/nextid");
+    console.log(getID);
+    const ID = getID.data.nextId;
+    console.log(ID);
+    if (ID == 2) {
+      setState("IN MATCH");
+    }
+    const resNextId = axios.post("http://localhost:5000/pushPlayer", {
+      id: ID,
+      address: `Player ${ID}`,
+      key: "publikc addrees",
+    });
+
+    // axios.get("http://localhost:5000/getplayer", {
+    //   id: ID == 1 ? 2 : 1,
+    // });
+    if (buttonState == 0) {
+      setButtonState(1);
+      //setState("CANCLE");
+    } else {
+      setButtonState(0);
+    }
+
+    //window.setTimeout(onClaim, 5000);
+  };
+  const getScreen = () => {
+    console.log(state);
+    if (state == "FIGHT") {
+      return <img src={start} />;
+    } else if (state == "CANCLE") {
+      return <img src={inq} />;
+    } else if (state == "CLAIM") {
+      return <img src={end} />;
+    } else if (state == "IN MATCH") {
+      return (
+        <iframe
+          className="has-ratio"
+          width="640"
+          height="360"
+          src={fight}
+          title="Unreal Stream"
+          frameBorder="0"
+          allowfullscreen=""
+          controls="0"
+          autoplay="0"
+          frameborder="0"
+          scrolling="no"
+          //allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      );
+    }
+
+    // <iframe
+    //   className="has-ratio"
+    //   width="640"
+    //   height="360"
+    //   src="https://www.youtube.com/embed/shqMtDv4uS8"
+    //   title="YouTube video player"
+    //   frameBorder="0"
+    //   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    //   allowFullScreen
+    // ></iframe>;
+
+    /* <img src={end} /> */
+  };
+
+  const onClaim = () => {
+    setState("CLAIM");
+    console.log("Claim");
   };
 
   useEffect(() => {
@@ -176,7 +278,20 @@ const Home = (props) => {
   //     setIsConnected(false);
   //   });
   // }, [wallet]);
-
+  const changeModelFront = () => {
+    console.log("Front");
+    console.log(MODEL_ARRAY.indexOf(src));
+    if (MODEL_ARRAY.indexOf(src) == 2) {
+      setSrc(MODEL_ARRAY[-1]);
+      return;
+    }
+    //console.log(MODEL_ARRAY.indexOf(src));
+    setSrc(MODEL_ARRAY[MODEL_ARRAY.indexOf(src) + 1]);
+  };
+  const changeModelBack = () => {
+    console.log("Back");
+    setSrc(MODEL_ARRAY[MODEL_ARRAY.indexOf(src) - 1]);
+  };
   return (
     <div>
       {/* Banner */}
@@ -211,7 +326,9 @@ const Home = (props) => {
             {/* livestreaming */}
             <div className="column">
               <figure className="image is-16by9">
-                <iframe
+                {getScreen()}
+                {/* <img src={inq} /> */}
+                {/* <iframe
                   className="has-ratio"
                   width="640"
                   height="360"
@@ -220,7 +337,8 @@ const Home = (props) => {
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
-                ></iframe>
+                ></iframe> */}
+                {/* <img src={end} /> */}
               </figure>
             </div>
 
@@ -232,7 +350,7 @@ const Home = (props) => {
               >
                 {buttonState == 0 ? (
                   <img
-                    src={hero}
+                    src={src}
                     className="is-flex-grow-1 p-3"
                     style={{ borderRadius: "20px" }}
                   />
@@ -254,15 +372,27 @@ const Home = (props) => {
                     </h1>
                   </div>
                 )}
-                <div class="center">
-                  <button
-                    class="raise"
-                    currentState={buttonState}
-                    onClick={toggleState}
-                    disabled={false}
-                  >
-                    {buttonState == 0 ? "Fight" : " Cancel"}
-                  </button>
+                <div>
+                  <div class="center" style={{ display: "flex" }}>
+                    <button
+                      class="raise"
+                      style={{ justifyContent: "center", width: 10 }}
+                      onClick={changeModelBack}
+                    ></button>
+                    <button
+                      class="raise"
+                      currentState={buttonState}
+                      onClick={toggleState}
+                      disabled={false}
+                    >
+                      {buttonState == 0 ? "Fight" : " Cancel"}
+                    </button>
+                    <button
+                      class="raise"
+                      style={{ justifyContent: "center", width: 10 }}
+                      onClick={changeModelFront}
+                    ></button>
+                  </div>
                 </div>
                 {/* <TechButton
                   currentState={buttonState}
