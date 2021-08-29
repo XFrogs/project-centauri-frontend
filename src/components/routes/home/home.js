@@ -24,6 +24,10 @@ import inq from "./inq.gif";
 import fight from "./fight.mp4";
 import axios from "axios";
 
+import {connect} from 'react-redux';
+import {change_state} from '../../../redux/actions/buttonActions';
+
+
 // const SPL_ASSOCIATED_TOKEN_ACCOUNT_PROGRAM_ID: PublicKey = new PublicKey(
 //   "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
 // );
@@ -59,6 +63,7 @@ const BUTTON_STATE = ["FIGHT", "CANCLE", "IN MATCH", "CLAIM"];
 
 const MODEL_ARRAY = [wide5_cyan, wide5_green, wide5_orange];
 const Home = (props) => {
+
   //const [isConnected, setIsConnected] = useState(false);
   const [buttonState, setButtonState] = useState(0);
   const [upcomingMatches, setUpcomingMatches] = useState([]);
@@ -91,6 +96,49 @@ const Home = (props) => {
   // //program id here please
 
   //const program = new anchor.Program(idl, programId, provider);
+
+  const [timeoutID, setTimeoutID] = useState(null);
+  const buttonClicked = e => {
+      e.preventDefault();
+
+
+
+      props.change_state();
+
+      if(props.buttonReducer.currentState == 'CLAIM'){
+          //execute claim logic
+      }
+      if (props.buttonReducer.currentState == 'FIGHT') {
+          const id = setTimeout(() => {
+                //to in match_state
+                props.change_state();
+
+                //to claim state
+                setTimeout(
+                    () => props.change_state(),
+                    3 * 1000
+                );
+
+            }
+          ,  5 * 1000);
+
+          setTimeoutID(id);
+      }
+      if (props.buttonReducer.currentState == 'CANCEL') {
+
+          props.change_state('FIGHT');
+          clearTimeout(timeoutID);
+      }
+
+
+
+  }
+
+  const localChangeState = e => {
+      e.preventDefault();
+
+      props.change_state();
+  }
 
   const toggleState = async () => {
     // // web3 -  make a vault
@@ -208,30 +256,19 @@ const Home = (props) => {
     //window.setTimeout(onClaim, 5000);
   };
   const getScreen = () => {
-    console.log(state);
-    if (state == "FIGHT") {
+
+    if (props.buttonReducer.currentState == "FIGHT") {
       return <img src={start} />;
-    } else if (state == "CANCLE") {
+  } else if (props.buttonReducer.currentState == "CANCEL") {
       return <img src={inq} />;
-    } else if (state == "CLAIM") {
+    } else if (props.buttonReducer.currentState == "CLAIM") {
       return <img src={end} />;
-    } else if (state == "IN MATCH") {
+  } else if (props.buttonReducer.currentState == "IN_MATCH") {
       return (
-        <iframe
-          className="has-ratio"
-          width="640"
-          height="360"
-          src={fight}
-          title="Unreal Stream"
-          frameBorder="0"
-          allowfullscreen=""
-          controls="0"
-          autoplay="0"
-          frameborder="0"
-          scrolling="no"
-          //allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+          <video width="1920" height="1080" autoplay="autoplay">
+            <source src={fight} type="video/mp4" />
+        </video>
+
       );
     }
 
@@ -325,21 +362,8 @@ const Home = (props) => {
           <div className="columns">
             {/* livestreaming */}
             <div className="column">
-              <figure className="image is-16by9">
                 {getScreen()}
-                {/* <img src={inq} /> */}
-                {/* <iframe
-                  className="has-ratio"
-                  width="640"
-                  height="360"
-                  src="https://www.youtube.com/embed/shqMtDv4uS8"
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe> */}
-                {/* <img src={end} /> */}
-              </figure>
+
             </div>
 
             {/* current match info */}
@@ -348,59 +372,99 @@ const Home = (props) => {
                 className="box has-background-dark is-flex is-flex-direction-column is-justify-content-center "
                 style={{ height: "100%" }}
               >
-                {buttonState == 0 ? (
-                  <img
-                    src={src}
-                    className="is-flex-grow-1 p-3"
-                    style={{ borderRadius: "20px" }}
-                  />
-                ) : (
-                  <div className="box has-background-dark2 is-flex-grow-1">
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <div class="lds-ellipsis">
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
+                {
+                    props.buttonReducer.currentState == 'FIGHT' ? (
+                      <img
+                        src={src}
+                        className="is-flex-grow-1 p-3"
+                        style={{ borderRadius: "20px" }}
+                      />
+                    ) :
+                    props.buttonReducer.currentState == 'CANCEL' ?
+                    (
+                      <div className="box has-background-dark2 is-flex-grow-1">
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <div class="lds-ellipsis">
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                          <div></div>
+                        </div>
+                        <h1 className="subtitle has-text-white is-4">
+                          Searching...
+                        </h1>
+                      </div>
+                    ) :
+                    props.buttonReducer.currentState == 'IN_MATCH' ? (
+                        <div className="is-flex is-flex-direction-column" style={{width: '100%', height: '100%', position: 'relative'}}>
+
+
+                            <div className="box p-0 mb-0" style={{overflow: 'hidden'}}>
+                                <figure className="image is-5by4">
+                                    <img src="https://bulma.io/images/placeholders/128x128.png"/>
+                                </figure>
+                            </div>
+                            <div className="vs has-background-white py-1 has-text-dark" style={{width:'30px', height:'30px', position: 'absolute', top: '50%', left:'50%', zIndex:'2', transform: 'translate(-50%, -50%)', borderRadius: '50%'}}>V</div>
+
+                            <div className="box p-0" style={{overflow: 'hidden'}}>
+                                <figure className="image is-5by4">
+                                    <img src="https://bulma.io/images/placeholders/128x128.png"/>
+                                </figure>
+                            </div>
+
+                        </div>
+                    ) :
+                    props.buttonReducer.currentState == 'CLAIM' ? (
+                        <img
+                          src={src}
+                          className="is-flex-grow-1 p-3"
+                          style={{ borderRadius: "20px" }}
+                        />
+                    ) : null
+                }
+                <div className="is-flex-grow-1 " style={{maxHeight: '84px'}}>
+                    <div className="columns is-mobile">
+                        <div className="column">
+                            {
+                                props.buttonReducer.currentState == 'FIGHT' ?
+                                    <button
+                                    className={`button is-primary has-text-white is-size-4 FIGHT no-border px-2`}
+                                    currentState={buttonState}
+                                    onClick={changeModelBack}
+                                    disabled={false}
+                                >{'<'}</button> : null
+                            }
+                        </div>
+                        <div className="column">
+                        <button
+                            className={`button is-primary has-text-white is-size-4 ${props.buttonReducer.currentState} no-border`}
+                            currentState={buttonState}
+                            onClick={buttonClicked}
+                            disabled={false}
+                        >
+                          {props.buttonReducer.currentState == 'IN_MATCH' ? 'in match' : props.buttonReducer.currentState.toLowerCase()}
+                        </button>
+                        </div>
+                        <div className="column">
+                            {
+                                props.buttonReducer.currentState == 'FIGHT' ?
+                                    <button
+                                    className={`button is-primary has-text-white is-size-4 FIGHT no-border px-2`}
+                                    currentState={buttonState}
+                                    onClick={changeModelFront}
+                                    disabled={false}
+                                >{'>'}</button> : null
+                            }
+                        </div>
                     </div>
-                    <h1 className="subtitle has-text-white is-4">
-                      Searching...
-                    </h1>
-                  </div>
-                )}
-                <div>
-                  <div class="center" style={{ display: "flex" }}>
-                    <button
-                      class="raise"
-                      style={{ justifyContent: "center", width: 10 }}
-                      onClick={changeModelBack}
-                    ></button>
-                    <button
-                      class="raise"
-                      currentState={buttonState}
-                      onClick={toggleState}
-                      disabled={false}
-                    >
-                      {buttonState == 0 ? "Fight" : " Cancel"}
-                    </button>
-                    <button
-                      class="raise"
-                      style={{ justifyContent: "center", width: 10 }}
-                      onClick={changeModelFront}
-                    ></button>
-                  </div>
+
+
                 </div>
-                {/* <TechButton
-                  currentState={buttonState}
-                  onClick={toggleState}
-                  disabled={false}
-                >
-                  {buttonState == 0 ? "Fight" : " Cancel"}
-                </TechButton> */}
+
               </div>
             </div>
           </div>
@@ -454,4 +518,13 @@ const Home = (props) => {
   );
 };
 
-export default Home;
+const mapStateToProps = state => ({
+    buttonReducer: state.buttonReducer
+})
+
+export default connect(
+    mapStateToProps,
+    {
+        change_state
+    }
+)(Home);
