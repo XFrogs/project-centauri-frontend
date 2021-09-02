@@ -1,3 +1,5 @@
 # Project Centauri
 
-Blockchain game
+Front End
+
+to install - npm install to start local server - npm start
