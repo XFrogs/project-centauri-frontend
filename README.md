@@ -2,4 +2,4 @@
 
 Front End
 
-to install - npm install to start local server - npm start
+to install - `npm install` to start local - `npm start`
